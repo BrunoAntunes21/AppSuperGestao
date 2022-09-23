@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class InfoController extends Controller
 {
-    public function info(){
+    public function Info(){
         return view('site.info');
     }
 }
