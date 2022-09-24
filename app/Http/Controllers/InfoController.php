@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class InfoController extends Controller
 {
     public function Info(){
-        return view('site.info');
+        return view('site.info',['titulo'=>'Informaçoes']);
     }
 }

@@ -1,20 +1,12 @@
  @extends('site.layouts.basico'){{--para fazer a utilização do template se usa @extends('subpast1.subpast2.nome_do_arquivo') --}}
 {{--Criação da seção para o envio ao template--}}
+@section('titulo',$titulo)
+
  @section('conteudo')
-        <div class="topo">
+       {{--relizaremos o @include do partial menu
+       @include('site.layouts._partials.menu')--}}
 
-            <div class="logo">
-                <img src="{{asset('img/logo.png')}}">
-            </div>
 
-            <div class="menu">
-                <ul>
-                    <li><a href="{{ route('site.index') }}">Principal</a></li>
-                    <li><a href="{{ route('site.info') }}">Sobre Nós</a></li>
-                    <li><a href="{{ route('site.contatos') }}">Contato</a></li>
-                </ul>
-            </div>
-        </div>
 
         <div class="conteudo-pagina">
             <div class="titulo-pagina">

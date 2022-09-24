@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class ContatoController extends Controller
 {
     public function contatos(){
-        return view('site.contato');
+        var_dump($_POST);
+        //passando o titulo via array associativo
+        return view('site.contato',['titulo'=>'Contato']);
     }
 }
