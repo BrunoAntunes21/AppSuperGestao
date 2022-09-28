@@ -16,7 +16,15 @@
                 <div class="contato-principal">
                     {{--criação da pasta component no diretorio layouts e criação
                         do componente de formulario(form_contato.blade.php) --}}
-                   @component('site.layouts._components.form_contato')
+
+
+                    {{--Passagem de parametros via array assosiativo --}}
+                   @component('site.layouts._components.form_contato',['classe'=>'borda-branca'])
+
+                    {{--passagem de parametros via slot --}}
+                    <p> a nossa equipe analisará e retornará o mais breve possivel
+                    empo médio de resposta é 48 horas</p>
+
                    @endcomponent
                 </div>
             </div>
