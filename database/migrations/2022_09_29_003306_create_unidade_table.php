@@ -13,7 +13,7 @@ class CreateUnidadeTable extends Migration
      */
     public function up()
     {
-       /* Schema::table('unidades', function (Blueprint $table) {
+        Schema::create('unidades', function (Blueprint $table) {
             $table->id();
             $table->string('unidade',50);
             $table->string('descricao',30);
@@ -22,12 +22,12 @@ class CreateUnidadeTable extends Migration
             //add o relacionamento com a tabela produto
 
 
-        });*/
+        });
          //add o relacionamento com a tabela produto
-        /* Schema::table('produtos',function(Blueprint $table){
+         Schema::table('produtos',function(Blueprint $table){
             //$table->unsignedBigInteger('unidade_id');
             $table->foreign('unidade_id')->references('id')->on('unidades');//[table]_[coluna]_foreing
-         });*/
+         });
             //add o relacionamneto com a tabela produto_detalhe
 
          Schema::table('produto_detalhes',function(Blueprint $table){

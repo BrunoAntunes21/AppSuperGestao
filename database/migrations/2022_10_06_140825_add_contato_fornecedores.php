@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterFornecedoresNovasColunas extends Migration
+class AddContatoFornecedores extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class AlterFornecedoresNovasColunas extends Migration
      * @return void
      */
     public function up()
-    {   //executa uma nova modificação na tabela referida
+    {
         Schema::table('fornecedores',function(Blueprint $table){
-            $table->string('uf',2);
-            $table->string('email',150);
-           
+            $table->string('contato',100)->after('uf');
         });
     }
 
@@ -27,10 +25,6 @@ class AlterFornecedoresNovasColunas extends Migration
      */
     public function down()
     {
-        //desfaz uma modificação na tabela
-        Schema::table('fornecedores',function (Blueprint $table){
-            $table->dropColumn('uf');
-            $table->dropColumn('email');
-        });
+        //
     }
 }
