@@ -2,7 +2,7 @@
 <form action={{route('site.contatos')}} method="post">
     {{--@csrf é o comando para a criação do token --}}
     @csrf
-    <input name="nome" type="text" placeholder="Nome" class="Borda-preta">
+    <input name="Nome" type="text" placeholder="Nome" class="Borda-preta">
     <br>
     <input name="telefone" type="text" placeholder="Telefone" class="Borda-preta">
     <br>
@@ -20,4 +20,8 @@
     <br>
     <button type="submit" class="Borda-preta">ENVIAR</button>
 </form>
-
+<div style="position:absolute;top:0px;left:0px;width:100%;background-color:red">
+<pre>
+    {{ print_r($errors) }}
+</pre>
+</div>

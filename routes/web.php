@@ -18,6 +18,7 @@ Route::get('/','IndexController@index')->name('site.index');
 Route::get('Info','InfoController@Info')->name('site.info');
 //o laravel requer um token para fazer o post e formularios
 Route::post('Contatos','ContatoController@contatos')->name('site.contatos');
+Route::post('Contatos','ContatoController@salvar')->name('site.contatos');
 Route::get('Contatos','ContatoController@contatos')->name('site.contatos');
 
 
