@@ -19,7 +19,7 @@
 
 
                     {{--Passagem de parametros via array assosiativo --}}
-                   @component('site.layouts._components.form_contato',['classe'=>'borda-branca'])
+                   @component('site.layouts._components.form_contato',['classe'=>'borda-preta'])
 
                     {{--passagem de parametros via slot --}}
                     <p> a nossa equipe analisará e retornará o mais breve possivel
@@ -29,6 +29,8 @@
                 </div>
             </div>
         </div>
+
+        
 
         <div class="rodape">
             <div class="redes-sociais">
