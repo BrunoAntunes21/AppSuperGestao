@@ -10,14 +10,15 @@
     <input  name="email"  type="text" placeholder="E-mail" class="Borda-preta" value="{{ old('email') }}"">
     <br>
 
-    <select name="motivo_contato" class="Borda-preta">
+    <select name="motivo_contatos" class="Borda-branca">
         <option value="">Qualo motivo do contato?</option>
         {{--criando a trativa selected no option pra gravar os dados já passados em caso de erro --}}
         Qual o motivo do contato?
         {{-- Essa parte tá certa Não mexer --}}
-        @foreach ($motivo_contatos as $key=>$motivo_contato)
-            <option value="{{$key}} {{ old('motivo_contato') ==$key ? 'Selected':''}}">{{$motivo_contato}}</option>
-        @endforeach
+        <option value="">qual o motivo do contato</option>
+        <option value="1" {{ old("motivo_contato")==1 ?'selected':''}}>Dúvida</option>
+        <option value="2" {{ old("motivo_contato")==2 ?'selected':''}}>Elogio</option>
+        <option value="3" {{ old("motivo_contato")==3 ?'selected':''}}>Reclamação</option>
 
     </select>
     <br>
