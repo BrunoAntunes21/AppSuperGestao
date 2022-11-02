@@ -58,6 +58,10 @@ class CreateUnidadeTable extends Migration
                 //remover a coluna
                 $table->dropColumn('unidade_id');
              });
+
+             Schema::table('unidades',function(Blueprint $table){
+                $table->dropTable('unidades');
+             });
     }
 }
 

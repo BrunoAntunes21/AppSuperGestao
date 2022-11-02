@@ -14,18 +14,18 @@ class AlterTableSiteContatosAddFkMotivosContatos extends Migration
      */
     public function up()
     //add a coluna motivo_contatos_id
-    
-    {   /*Schema::table('site_contatos',function(Blueprint $table){
+
+    {   Schema::table('site_contatos',function(Blueprint $table){
         $table->unsignedBigInteger('motivo_contatos_id');
 
-    }); */
+    });
         //atribuindo motivo_contato para a nova coluna motivo_contato_id
         DB::statement('update site_contatos set  motivo_contatos_id = motivo_contato');
         //criando  a fk(foreig key)
-        Schema::table('site_contatos',function(Blueprint $table){
+        /*Schema::table('site_contatos',function(Blueprint $table){
             $table->foreign('motivos_contatos_id')->references('id')->on('motivo_contatos');
             $table->dropColumn('motivo_contato');
-        });
+        });*/
     }
 
     /**
