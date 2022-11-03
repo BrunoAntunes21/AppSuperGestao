@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Middleware\LogacessoMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //nomendo rotas ->name('nome da rota');
-Route::get('/','IndexController@index')->name('site.index');
-Route::get('Info','InfoController@Info')->name('site.info');
+Route::middleware(LogacessoMiddleware::class)->get('/','IndexController@index')->name('site.index');//utilizando midleware nas rotas
+Route::middleware(LogacessoMiddleware::class)->get('Info','InfoController@Info')->name('site.info');
 //o laravel requer um token para fazer o post e formularios
 Route::post('Contatos','ContatoController@contatos')->name('site.contatos');
 Route::post('Contatos','ContatoController@salvar')->name('site.contatos');
-Route::get('Contatos','ContatoController@contatos')->name('site.contatos');
+Route::middleware(LogacessoMiddleware::class)->get('Contatos','ContatoController@contatos')->name('site.contatos');
 
 
 Route::get('/login','LoginController@login')->name('site.login');
