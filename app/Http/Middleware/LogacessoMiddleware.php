@@ -15,13 +15,14 @@ class LogacessoMiddleware
      */
     public function handle($request, Closure $next)
     {   //$request-manipular
-        return $next($request);
         //$response-manipular
         //recuperando o ip da maquina
         $ip=$request->server->get('REMOTE_ADDR');
         //recuperando a rota
         $rota=$request->getRequesturi();
         LogAcesso::create(['log'=>"ip $ip requisitou a rota $rota"]);
+       // return Response('Chegamos no midleware e finalizamos no proprio midleware');
+        return $next($request);
 
 
     }

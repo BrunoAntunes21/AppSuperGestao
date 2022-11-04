@@ -8,7 +8,7 @@ use App\Http\Middleware\LogacessoMiddleware;
 class InfoController extends Controller
 {   public function __construct()
 {
-    $this->middleware(LogacessoMiddleware::class);
+    $this->middleware('log.acesso');
 
 }
     public function Info(){

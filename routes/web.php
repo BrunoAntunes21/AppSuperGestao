@@ -15,20 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //nomendo rotas ->name('nome da rota');
-Route::middleware(LogacessoMiddleware::class)->get('/','IndexController@index')->name('site.index');//utilizando midleware nas rotas
-Route::middleware(LogacessoMiddleware::class)->get('Info','InfoController@Info')->name('site.info');
+Route::get('/','IndexController@index')->name('site.index')->middleware('log.acesso');//utilizando midleware nas rotas
+Route::get('Info','InfoController@Info')->name('site.info')->middleware('log.acesso');
 //o laravel requer um token para fazer o post e formularios
 Route::post('Contatos','ContatoController@contatos')->name('site.contatos');
 Route::post('Contatos','ContatoController@salvar')->name('site.contatos');
-Route::middleware(LogacessoMiddleware::class)->get('Contatos','ContatoController@contatos')->name('site.contatos');
+Route::get('Contatos','ContatoController@contatos')->name('site.contatos')->middleware('log.acesso');
 
 
 Route::get('/login','LoginController@login')->name('site.login');
 
 Route::prefix('/app')->group(function(){
-    Route::get('/clientes', function(){return 'Clientes';})->name('app.clientes');
-    Route::get('/fornecedores','FornecedorController@index')->name('app.fornecedores');
-    Route::get('/produtos', function(){return 'Produtos';})->name('app.produtos');
+    //encadeando midlewares o 1º para registro de log e o segundo para jogar para a pagina de validação(pedente)
+    Route::middleware('log.acesso','autenticacao')->get('/clientes', function(){return 'Clientes';})->name('app.clientes');
+    Route::middleware('log.acesso','autenticacao')->get('/fornecedores','FornecedorController@index')->name('app.fornecedores');
+    Route::middleware('log.acesso','autenticacao')->get('/produtos', function(){return 'Produtos';})->name('app.produtos');
 
 });
 //criação de uma nova rota para teste com parametros
