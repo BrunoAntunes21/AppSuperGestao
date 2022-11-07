@@ -22,7 +22,14 @@ class LogacessoMiddleware
         $rota=$request->getRequesturi();
         LogAcesso::create(['log'=>"ip $ip requisitou a rota $rota"]);
        // return Response('Chegamos no midleware e finalizamos no proprio midleware');
-        return $next($request);
+       // return $next($request);
+        $resposta=$next($request);
+        $resposta->setStatusCode(201,'o status e o texto resposta foram modificados');
+
+        return $resposta;
+
+
+
 
 
     }

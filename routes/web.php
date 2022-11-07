@@ -25,11 +25,11 @@ Route::get('Contatos','ContatoController@contatos')->name('site.contatos')->midd
 
 Route::get('/login','LoginController@login')->name('site.login');
 
-Route::prefix('/app')->group(function(){
+Route::middleware('log.acesso','autenticacao:ldap,Bruno')->prefix('/app')->group(function(){
     //encadeando midlewares o 1º para registro de log e o segundo para jogar para a pagina de validação(pedente)
-    Route::middleware('log.acesso','autenticacao')->get('/clientes', function(){return 'Clientes';})->name('app.clientes');
-    Route::middleware('log.acesso','autenticacao')->get('/fornecedores','FornecedorController@index')->name('app.fornecedores');
-    Route::middleware('log.acesso','autenticacao')->get('/produtos', function(){return 'Produtos';})->name('app.produtos');
+    Route::get('/clientes', function(){return 'Clientes';})->name('app.clientes');
+    Route::get('/fornecedores','FornecedorController@index')->name('app.fornecedores');
+    Route::get('/produtos', function(){return 'Produtos';})->name('app.produtos');
 
 });
 //criação de uma nova rota para teste com parametros
