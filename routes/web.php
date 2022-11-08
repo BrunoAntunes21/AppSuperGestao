@@ -21,9 +21,8 @@ Route::get('Info','InfoController@Info')->name('site.info')->middleware('log.ace
 Route::post('Contatos','ContatoController@contatos')->name('site.contatos');
 Route::post('Contatos','ContatoController@salvar')->name('site.contatos');
 Route::get('Contatos','ContatoController@contatos')->name('site.contatos')->middleware('log.acesso');
-
-
-Route::get('/login','LoginController@login')->name('site.login');
+Route::get('/login','LoginController@index')->name('site.login');
+Route::post('/login','LoginController@autenticar')->name('site.login');
 
 Route::middleware('log.acesso','autenticacao:ldap,Bruno')->prefix('/app')->group(function(){
     //encadeando midlewares o 1º para registro de log e o segundo para jogar para a pagina de validação(pedente)
