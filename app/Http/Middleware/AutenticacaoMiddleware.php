@@ -15,18 +15,12 @@ class AutenticacaoMiddleware
      */
     public function handle($request, Closure $next,$metodo_autenticacao,$perfil)
     {   // ususario possuir acesso a rota
-        echo $metodo_autenticacao.' - '.$perfil.'<br>';
+        session_start();
+        if(isset($_SESSION['email'])&& $_SESSION['email'] !=''){
+            return $next($request);
 
-        if($metodo_autenticacao=='padrao'){
-            echo '<br>Verificacao o usuario no banco de dados';
+        }else{
+            return redirect()->route('site.login',['erro'=>2]);
         }
-        if($metodo_autenticacao=='ldap'){
-            echo 'Verificacao o usuario no AD'.'<br>';
-        }
-        if(false){
-            return $next($request).'<br>';
-        }
-        else{
-        return Response('Acesso negado! Rota exige Autenticação !!!');}
     }
-}
+}   

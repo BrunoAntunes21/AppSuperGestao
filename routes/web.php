@@ -21,14 +21,19 @@ Route::get('Info','InfoController@Info')->name('site.info')->middleware('log.ace
 Route::post('Contatos','ContatoController@contatos')->name('site.contatos');
 Route::post('Contatos','ContatoController@salvar')->name('site.contatos');
 Route::get('Contatos','ContatoController@contatos')->name('site.contatos')->middleware('log.acesso');
-Route::get('/login','LoginController@index')->name('site.login');
+Route::get('/login/{erro?}','LoginController@index')->name('site.login');
 Route::post('/login','LoginController@autenticar')->name('site.login');
 
 Route::middleware('log.acesso','autenticacao:ldap,Bruno')->prefix('/app')->group(function(){
     //encadeando midlewares o 1º para registro de log e o segundo para jogar para a pagina de validação(pedente)
-    Route::get('/clientes', function(){return 'Clientes';})->name('app.clientes');
+    Route::get('/home','HomeController@index')->name('app.home');
+    Route::get('/sair','LoginController@sair')->name('app.sair');
+    Route::get('/clientes', 'ClienteController@index')->name('app.clientes');
     Route::get('/fornecedores','FornecedorController@index')->name('app.fornecedores');
-    Route::get('/produtos', function(){return 'Produtos';})->name('app.produtos');
+    Route::post('/fornecedores/lista','FornecedorController@listar')->name('app.fornecedor.lista');
+    Route::get('/fornecedores/adicionar','FornecedorController@adicionar')->name('app.fornecedor.adicionar');
+
+    Route::get('/produtos', 'ProdutoController@index')->name('app.produtos');
 
 });
 //criação de uma nova rota para teste com parametros
